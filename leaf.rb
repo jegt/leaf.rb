@@ -96,7 +96,9 @@ class Leaf
     #puts "VIN: #{self.vin}"
 
     #puts "Login complete"
-    true
+    return true
+  rescue RestClient::Unauthorized
+    return false
   end
 
   def get(url, params = nil)
@@ -190,7 +192,11 @@ end
 
 if(ARGV[0])
   l = Leaf.new
-  l.login
+  100.times do
+    if l.login
+      break
+    end
+  end
   r = l.send(ARGV[0])
   puts JSON.pretty_generate(r) if ARGV[0].end_with?('status')
 end
