@@ -18,9 +18,9 @@ class Leaf
   def login
     headers = {}
     headers["Accept-Api-Version"] = 'protocol=1.0,resource=2.1';
-    headers["Host"] = "prod.eu.auth.kamereon.org";
+    headers["Host"] = "prod.eu2.auth.kamereon.org";
     headers["Accept-Api-Version"] = "protocol=1.0,resource=2.1";
-    headers["Origin"] = "https://prod.eu.auth.kamereon.org";
+    headers["Origin"] = "https://prod.eu2.auth.kamereon.org";
     headers["X-Password"] = "anonymous";
     headers["Accept-Language"] = "en-UK";
     headers["X-Username"] = "anonymous";
@@ -32,10 +32,10 @@ class Leaf
     headers["X-Requested-With"] = "XMLHttpRequest";
     headers["X-Nosession"] = "true";
     headers["Referer"] =
-        "https://prod.eu.auth.kamereon.org/kauth/XUI/?realm=%2Fa-ncb-prod&goto=https%3A%2F%2Fprod.eu.auth.kamereon.org%2Fkauth%2Foauth2%2Fa-ncb-prod%2Fauthorize%3Fclient_id%3Da-ncb-prod-android%26redirect_uri%3Dorg.kamereon.service.nci%253A%252Foauth2redirect%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520vehicles%26state%3Daf0ifjsldkj%26nonce%3Dsdfdsfez";
+        "https://prod.eu2.auth.kamereon.org/kauth/XUI/?realm=%2Fa-ncb-prod&goto=https%3A%2F%2Fprod.eu2.auth.kamereon.org%2Fkauth%2Foauth2%2Fa-ncb-prod%2Fauthorize%3Fclient_id%3Da-ncb-prod-android%26redirect_uri%3Dorg.kamereon.service.nci%253A%252Foauth2redirect%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520vehicles%26state%3Daf0ifjsldkj%26nonce%3Dsdfdsfez";
     headers["Cookie"] = "i18next=en-UK";
 
-    url = "https://prod.eu.auth.kamereon.org/kauth/json/realms/root/realms/a-ncb-prod/authenticate?goto=https%3A%2F%2Fprod.eu.auth.kamereon.org%2Fkauth%2Foauth2%2Fa-ncb-prod%2Fauthorize%3Fclient_id%3Da-ncb-prod-android%26redirect_uri%3Dorg.kamereon.service.nci%253A%252Foauth2redirect%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520vehicles%26state%3Daf0ifjsldkj%26nonce%3Dsdfdsfez"
+    url = "https://prod.eu2.auth.kamereon.org/kauth/json/realms/root/realms/a-ncb-prod/authenticate?goto=https%3A%2F%2Fprod.eu2.auth.kamereon.org%2Fkauth%2Foauth2%2Fa-ncb-prod%2Fauthorize%3Fclient_id%3Da-ncb-prod-android%26redirect_uri%3Dorg.kamereon.service.nci%253A%252Foauth2redirect%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520vehicles%26state%3Daf0ifjsldkj%26nonce%3Dsdfdsfez"
 
     resp = RestClient.post(url, nil, headers)
     body = JSON.parse(resp.body)
@@ -45,7 +45,7 @@ class Leaf
 
     body['callbacks'].each {|c| i = c['input'].first; i['value'] = i['name'] == 'IDToken1' ? username : password }
 
-    url = "https://prod.eu.auth.kamereon.org/kauth/json/realms/root/realms/a-ncb-prod/authenticate?goto=https%3A%2F%2Fprod.eu.auth.kamereon.org%2Fkauth%2Foauth2%2Fa-ncb-prod%2Fauthorize%3Fclient_id%3Da-ncb-prod-android%26redirect_uri%3Dorg.kamereon.service.nci%253A%252Foauth2redirect%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520vehicles%26state%3Daf0ifjsldkj%26nonce%3Dsdfdsfez",
+    url = "https://prod.eu2.auth.kamereon.org/kauth/json/realms/root/realms/a-ncb-prod/authenticate?goto=https%3A%2F%2Fprod.eu2.auth.kamereon.org%2Fkauth%2Foauth2%2Fa-ncb-prod%2Fauthorize%3Fclient_id%3Da-ncb-prod-android%26redirect_uri%3Dorg.kamereon.service.nci%253A%252Foauth2redirect%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520vehicles%26state%3Daf0ifjsldkj%26nonce%3Dsdfdsfez",
 
     body = JSON.parse(RestClient.post(url, JSON.generate(body), headers).body)
 
@@ -53,16 +53,16 @@ class Leaf
     #puts "TokenID: #{token_id}"
 
     headers = {}
-    headers["Host"] = "prod.eu.auth.kamereon.org"
+    headers["Host"] = "prod.eu2.auth.kamereon.org"
     headers["Upgrade-Insecure-Requests"] = "1";
     headers["User-Agent"] = "Mozilla/5.0 (Linux; Android 5.1.1; SM-N950N Build/NMF26X; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/74.0.3729.136 Mobile Safari/537.36";
     headers["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3"
-    headers["Referer"] = "https://prod.eu.auth.kamereon.org/kauth/XUI/?realm=%2Fa-ncb-prod&goto=https%3A%2F%2Fprod.eu.auth.kamereon.org%2Fkauth%2Foauth2%2Fa-ncb-prod%2Fauthorize%3Fclient_id%3Da-ncb-prod-android%26redirect_uri%3Dorg.kamereon.service.nci%253A%252Foauth2redirect%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520vehicles%26state%3Daf0ifjsldkj%26nonce%3Dsdfdsfez"
+    headers["Referer"] = "https://prod.eu2.auth.kamereon.org/kauth/XUI/?realm=%2Fa-ncb-prod&goto=https%3A%2F%2Fprod.eu2.auth.kamereon.org%2Fkauth%2Foauth2%2Fa-ncb-prod%2Fauthorize%3Fclient_id%3Da-ncb-prod-android%26redirect_uri%3Dorg.kamereon.service.nci%253A%252Foauth2redirect%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520vehicles%26state%3Daf0ifjsldkj%26nonce%3Dsdfdsfez"
     headers["Accept-Language"] = "en-UK,en-US;q=0.9,en;q=0.8"
     headers["Cookie"] = "i18next=en-UK; amlbcookie=05; kauthSession=\"#{token_id}\""
     headers["X-Requested-With"] = "com.android.browser"
 
-    url = "https://prod.eu.auth.kamereon.org/kauth/oauth2/a-ncb-prod/authorize?client_id=a-ncb-prod-android&redirect_uri=org.kamereon.service.nci%3A%2Foauth2redirect&response_type=code&scope=openid%20profile%20vehicles&state=af0ifjsldkj&nonce=sdfdsfez"
+    url = "https://prod.eu2.auth.kamereon.org/kauth/oauth2/a-ncb-prod/authorize?client_id=a-ncb-prod-android&redirect_uri=org.kamereon.service.nci%3A%2Foauth2redirect&response_type=code&scope=openid%20profile%20vehicles&state=af0ifjsldkj&nonce=sdfdsfez"
 
     begin
       resp = RestClient::Request.execute(method: :get, url: url, headers: headers, max_redirects: 0)
@@ -73,18 +73,18 @@ class Leaf
     #puts "Code: #{code}"
 
     headers = {}
-    headers["Host"] = 'prod.eu.auth.kamereon.org'
+    headers["Host"] = 'prod.eu2.auth.kamereon.org'
     headers["User-Agent"] = 'okhttp/3.11.0';
     headers["Content-Type"] = 'application/x-www-form-urlencoded';
 
-    url = "https://prod.eu.auth.kamereon.org/kauth/oauth2/a-ncb-prod/access_token?code=#{code}&client_id=a-ncb-prod-android&client_secret=3LBs0yOx2XO-3m4mMRW27rKeJzskhfWF0A8KUtnim8i%2FqYQPl8ZItp3IaqJXaYj_&redirect_uri=org.kamereon.service.nci%3A%2Foauth2redirect&grant_type=authorization_code"
+    url = "https://prod.eu2.auth.kamereon.org/kauth/oauth2/a-ncb-prod/access_token?code=#{code}&client_id=a-ncb-prod-android&client_secret=0sAcrtwvwEXXZp5nzQhPexSRhxUVKa0d76F4uqDvxvvKFHXpo4myoJwUuV4vuNqC&redirect_uri=org.kamereon.service.nci%3A%2Foauth2redirect&grant_type=authorization_code"
 
     resp = RestClient.post(url, nil, headers)
     body = JSON.parse(resp.body)
     self.token = body['access_token']
     #puts "Token: #{self.token}"
 
-    url = "https://alliance-platform-usersadapter-prod.apps.eu.kamereon.io/user-adapter/v1/users/current"
+    url = "https://alliance-platform-usersadapter-prod.apps.eu2.kamereon.io/user-adapter/v1/users/current"
     body = get(url)
     self.user_id = body['userId']
     #puts "UserID: #{self.user_id}"
@@ -99,10 +99,13 @@ class Leaf
     return true
   rescue RestClient::Unauthorized
     return false
+  rescue => e
+    pp body
+    return false
   end
 
   def get(url, params = nil)
-    url = "https://alliance-platform-caradapter-prod.apps.eu.kamereon.io/car-adapter/"+url unless url.start_with?('https')
+    url = "https://alliance-platform-caradapter-prod.apps.eu2.kamereon.io/car-adapter/"+url unless url.start_with?('https')
     headers = { 'Authorization' => "Bearer #{self.token}", :params => params }
     headers["Accept"] = 'application/vnd.api+json'
     resp = RestClient.get(url, headers)
@@ -110,7 +113,7 @@ class Leaf
   end
 
   def post(url, body)
-    url = "https://alliance-platform-caradapter-prod.apps.eu.kamereon.io/car-adapter/"+url unless url.start_with?('https')
+    url = "https://alliance-platform-caradapter-prod.apps.eu2.kamereon.io/car-adapter/"+url unless url.start_with?('https')
     body = JSON.generate(body) unless body.class == String
     headers = { 'Authorization' => "Bearer #{self.token}" }
     headers["Content-Type"] = "application/vnd.api+json";
@@ -157,7 +160,7 @@ class Leaf
   end
 
   def hvac_start
-    action('hvac-start', { action: 'start', targetTemperature: 21})
+    action('hvac-start', { action: 'start', targetTemperature: 26})
   end
 
   def hvac_stop
@@ -193,10 +196,16 @@ end
 if(ARGV[0])
   l = Leaf.new
   100.times do
-    if l.login
-      break
+    begin
+      if l.login
+        break
+      end
+    rescue RestClient::Unauthorized => e
+      puts e
     end
   end
   r = l.send(ARGV[0])
-  puts JSON.pretty_generate(r) if ARGV[0].end_with?('status')
+  puts Time.now
+  puts JSON.pretty_generate(r) #if ARGV[0].end_with?('status')
+  puts ''
 end
