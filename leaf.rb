@@ -100,8 +100,21 @@ class Leaf
   rescue RestClient::Unauthorized
     return false
   rescue => e
-    pp body
+    #pp body
     return false
+  end
+
+  def login_retry
+    100.times do
+      begin
+        if self.login
+          break
+        end
+      rescue RestClient::Unauthorized => e
+        puts 'Login Failed'
+        puts e
+      end
+    end
   end
 
   def get(url, params = nil)
@@ -195,15 +208,7 @@ end
 
 if(ARGV[0])
   l = Leaf.new
-  100.times do
-    begin
-      if l.login
-        break
-      end
-    rescue RestClient::Unauthorized => e
-      puts e
-    end
-  end
+  l.login_retry
   r = l.send(ARGV[0])
   puts Time.now
   puts JSON.pretty_generate(r) #if ARGV[0].end_with?('status')
