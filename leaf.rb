@@ -89,7 +89,7 @@ class Leaf
     self.user_id = body['userId']
     #puts "UserID: #{self.user_id}"
 
-    url = "https://nci-bff-web-prod.apps.eu.kamereon.io/bff-web/v2/users/#{self.user_id}/cars"
+    url = "https://nci-bff-web-prod.apps.eu2.kamereon.io/bff-web/v5/users/#{self.user_id}/cars"
     body = get(url)
     self.car = body['data'].first
     self.vin = self.car['vin']
